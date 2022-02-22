@@ -1,6 +1,8 @@
-FROM registry.ci.openshift.org/openshift/release:golang-1.13 AS build-env
+FROM golang:1.13-alpine AS build-env
 
 COPY . /src/
+
+RUN apk add git make
 
 RUN cd /src && \
     make code/compile && \
